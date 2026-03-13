@@ -16,3 +16,9 @@ class Filme
         $this->saldo = $this->saldo + $valor;
     }
 }
+
+$filme = new Filme("Toy Story", 10);
+$filme->incrementarSaldo(5);
+
+echo "Nome do Filme: $filme->nome<br>";
+echo "Saldo disponível: $filme->saldo";
