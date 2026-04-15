@@ -10,13 +10,13 @@ class Conta
     function __construct($numero, $saldo)
     {
         $this->numero = $numero;
-        $this->saldo = 0;
+        $this->saldo = $saldo;
     }
 
     // Métodos
     function creditar($valor)
     {
-        this->saldo = $this->saldo + $valor;
+        $this->saldo = $this->saldo + $valor;
     }
 
     function debitar($valor)
@@ -35,7 +35,13 @@ class Conta
 
 class Poupanca extends Conta
 {
-    public $juros = 0.05;
+    public $juros;
+
+    function __construct($numero, $saldo, $juros)
+    {
+        parent::__construct($numero, $saldo);
+        $this->juros = $juros;
+    }
 
     function atualizarJuros()
     {
@@ -49,17 +55,8 @@ $conta->creditar(50);
 $conta->debitar(100);
 echo "Saldo da conta $conta->numero: $conta->saldo <br>";
 
-$poupanca = new Poupanca(2, 150);
+$poupanca = new Poupanca(2, 150, 0.10);
 $poupanca->creditar(50);
 $poupanca->debitar(100);
 $poupanca->atualizarJuros();
-echo "Saldo da conta $poupanca->numero: $poupanca->saldo <br>";
-
-
-
-
-
-
-
-
-
+echo "Saldo da Poupança $poupanca->numero: $poupanca->saldo <br>";
